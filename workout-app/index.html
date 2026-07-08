@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>Understory — Workout Log</title>
+<meta name="theme-color" content="#161D19" />
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body data-theme="foggy-pine">
+<div id="app">
+
+  <div class="topbar">
+    <div class="brand"><span class="outline">under</span>story</div>
+    <button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button>
+  </div>
+
+  <!-- HOME / CALENDAR -->
+  <section class="screen" id="screen-home">
+    <div class="cal-header">
+      <button id="calPrev">‹</button>
+      <div class="cal-month" id="calMonthLabel">Month Year</div>
+      <button id="calNext">›</button>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="legend" id="legend"></div>
+
+    <div class="section-title">Selected day</div>
+    <div id="dayDetail" class="empty-state">Tap a day to see what you logged.</div>
+  </section>
+
+  <!-- WORKOUTS (templates) -->
+  <section class="screen hidden" id="screen-workouts">
+    <div class="section-title">Your workouts</div>
+    <div id="workoutList"></div>
+    <button class="btn ghost" id="newWorkoutBtn" style="margin-top:14px;">+ Build a new workout</button>
+  </section>
+
+  <!-- ROUTINES -->
+  <section class="screen hidden" id="screen-routines">
+    <div class="section-title">Weekly routines</div>
+    <div id="routineList"></div>
+    <button class="btn ghost" id="newRoutineBtn" style="margin-top:14px;">+ Build a weekly routine</button>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="screen hidden" id="screen-settings">
+    <div class="section-title">Color palette</div>
+    <div class="theme-grid" id="themeGrid"></div>
+
+    <div class="section-title">Your data</div>
+    <div class="card">
+      <p class="card-sub" style="margin-bottom:12px;">Everything lives only on this device. Export a backup or move it to another phone.</p>
+      <div class="btn-row">
+        <button class="btn secondary" id="exportBtn">Export JSON</button>
+        <button class="btn secondary" id="importBtn">Import JSON</button>
+      </div>
+      <input type="file" id="importFile" accept="application/json" style="display:none;" />
+    </div>
+
+    <div class="section-title">Custom lists</div>
+    <div class="card">
+      <div class="field"><label>Gyms (climb)</label><div class="chip-group" id="gymChips"></div></div>
+      <div class="field"><label>Studios (yoga)</label><div class="chip-group" id="studioChips"></div></div>
+      <div class="field"><label>Surf spots</label><div class="chip-group" id="spotChips"></div></div>
+    </div>
+
+    <div class="section-title">Install</div>
+    <div class="card">
+      <p class="card-sub">On iPhone: Share → Add to Home Screen. On Android: browser menu → Install app / Add to Home screen.</p>
+    </div>
+  </section>
+
+  <div class="bottom-nav">
+    <div class="bottom-nav-inner">
+      <button class="nav-btn active" data-screen="home"><span class="nav-icon">◔</span>Home</button>
+      <button class="nav-btn" data-screen="workouts"><span class="nav-icon">▤</span>Workouts</button>
+      <button class="nav-btn" data-screen="routines"><span class="nav-icon">◈</span>Routines</button>
+      <button class="nav-btn" id="fabLog" data-fab="1"><span class="nav-icon">＋</span>Log</button>
+    </div>
+  </div>
+
+  <!-- Generic bottom sheet -->
+  <div class="sheet-backdrop hidden" id="sheetBackdrop">
+    <div class="sheet" id="sheet"></div>
+  </div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
